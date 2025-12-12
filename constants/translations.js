@@ -62,7 +62,7 @@ export const translations = {
     contact: {
       title: "Where to Find Us",
       visitBar: "Visit Our Bar",
-      address: "456, Raq Blvd. #404, Los Angeles, CA 90210",
+      address: "geovanidev.online, Brasília - DF",
       contactUs: "Contact Us",
       phone: "+55(61)98154-2702",
       email: "geovanigcs.dev@gmail.com",
@@ -224,7 +224,7 @@ export const translations = {
     contact: {
       title: "Onde Nos Encontrar",
       visitBar: "Visite Nosso Bar",
-      address: "456, Raq Blvd. #404, Los Angeles, CA 90210",
+      address: "geovanidev.online, Brasília - DF",
       contactUs: "Entre em Contato",
       phone: "+55(61)98154-2702",
       email: "geovanigcs.dev@gmail.com",

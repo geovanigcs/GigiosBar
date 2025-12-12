@@ -50,8 +50,15 @@ useGSAP(() => {
       <div className="content">
         <h2>{t.contact.title}</h2>
         <div className="">
-          <h3>{t.contact.visitBar}</h3>
-          <p>{t.contact.address}</p>
+          <h3 clas>{t.contact.visitBar}</h3>
+          <a 
+            href="https://geovanidev.online/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-yellow transition-colors"
+          >
+            {t.contact.address}
+          </a>
         </div>
         <div className="">
           <h3>{t.contact.contactUs}</h3>
