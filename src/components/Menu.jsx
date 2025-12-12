@@ -3,10 +3,20 @@ import { allCocktails } from "../../constants";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useState, useRef } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../../constants/translations";
 
 const Menu = () => {
   const contentRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { language } = useLanguage();
+  const t = translations[language];
+  
+  // Merge translated data with images from constants
+  const translatedCocktails = t.allCocktails.map((cocktail, index) => ({
+    ...cocktail,
+    image: allCocktails[index].image
+  }));
 
   useGSAP(() => {
     gsap.fromTo('#title', {opacity: 0}, {opacity: 1, duration: 1});
@@ -15,14 +25,14 @@ const Menu = () => {
     gsap.fromTo('details p', {yPercent: 100, opacity: 0}, {yPercent: 0, opacity: 100, ease: "power1.inOut"});
   }, [currentIndex]);
 
-  const totalCocktails = allCocktails.length;
+  const totalCocktails = translatedCocktails.length;
   const goToSlide = (index) => {
     const newIndex = (index + totalCocktails) % totalCocktails;
     setCurrentIndex(newIndex);
   };
 
   const getCocktailAt = (indexOffset) => {
-    return allCocktails[
+    return translatedCocktails[
       (currentIndex + indexOffset + totalCocktails) % totalCocktails
     ];
   };
@@ -48,7 +58,7 @@ const Menu = () => {
         Cocktail Menu
       </h2>
       <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
-        {allCocktails.map((cocktail, index) => {
+        {translatedCocktails.map((cocktail, index) => {
           const isActive = index === currentIndex;
           return (
             <button
@@ -95,7 +105,7 @@ const Menu = () => {
         </div>
         <div className="recipe">
           <div ref={contentRef} className="info">
-            <p>Recipe for:</p>
+            <p>{t.menu.recipeFor}</p>
             <p id="title">{currentCocktail.name}</p>
           </div>
           <div className="details">

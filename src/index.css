@@ -82,6 +82,14 @@ body {
         ul {
             @apply flex-center lg:gap-12 gap-7;
         }
+
+        button {
+            @apply flex items-center justify-center p-0 bg-transparent border-none cursor-pointer transition-all duration-300;
+        }
+
+        button img {
+            @apply w-7 h-7 object-cover rounded shadow-lg hover:scale-110 transition-transform duration-300;
+        }
     }
 
     .noisy {

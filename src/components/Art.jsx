@@ -1,10 +1,15 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { featureLists, goodLists } from "../../constants";
 import { useMediaQuery } from "react-responsive";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../../constants/translations";
 
 const Art = () => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
+    const { language } = useLanguage();
+    const t = translations[language];
+    const featureLists = t.art.features;
+    const goodLists = t.art.goodLists;
 
     useGSAP(() => {
         const start = isMobile ? 'top 20%' : 'top top';
@@ -28,7 +33,7 @@ const Art = () => {
     return (
         <section id="art">
             <div className="container mx-auto h-full pt-20">
-                <h2 className="will-fade">The ART</h2>
+                <h2 className="will-fade">{t.art.title}</h2>
                 <div className="content">
                     <ul className="space-y-4 will-fade">
                         {goodLists.map((feature, index) => (
@@ -51,10 +56,10 @@ const Art = () => {
                     </ul>
                 </div>
                 <div className="masked-container">
-                    <h2 className="will-fade">Sip - Worthy Perfection</h2>
+                    <h2 className="will-fade">{t.art.maskedTitle}</h2>
                     <div id="masked-content">
-                        <h3>Made with Craft, Poured with Passion</h3>
-                    <p>This isn't just a drink. It's a carefully crafted moment made just for you.</p>
+                        <h3>{t.art.maskedSubtitle}</h3>
+                    <p>{t.art.maskedDescription}</p>
                     </div>
                 </div>
             </div>

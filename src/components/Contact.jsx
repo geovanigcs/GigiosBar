@@ -1,11 +1,21 @@
-import { openingHours } from "../../constants";
 import { socials } from "../../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../../constants/translations";
 
 
 const Contact = () => {
+const { language } = useLanguage();
+const t = translations[language];
+
+const openingHours = [
+  { day: t.contact.days.monThu, time: "11:00am – 12am" },
+  { day: t.contact.days.fri, time: "11:00am – 2am" },
+  { day: t.contact.days.sat, time: "9:00am – 2am" },
+  { day: t.contact.days.sun, time: "9:00am – 1am" },
+];
 useGSAP(() => {
     const titleSplit = SplitText.create('#contact h2', {type: 'word'})
     const timeline = gsap.timeline({
@@ -38,18 +48,18 @@ useGSAP(() => {
         id="f-left-leaf"
       />
       <div className="content">
-        <h2>Where to Find Us</h2>
+        <h2>{t.contact.title}</h2>
         <div className="">
-          <h3>Visit Our Bar</h3>
-          <p>456, Raq Blvd. #404, Los Angeles, CA 90210</p>
+          <h3>{t.contact.visitBar}</h3>
+          <p>{t.contact.address}</p>
         </div>
         <div className="">
-          <h3>Contact Us</h3>
-          <p>+55(61)98154-2702</p>
-          <p>geovanigcs.dev@gmail.com</p>
+          <h3>{t.contact.contactUs}</h3>
+          <p>{t.contact.phone}</p>
+          <p>{t.contact.email}</p>
         </div>
         <div>
-          <h3>Open Every Day</h3>
+          <h3>{t.contact.openEveryDay}</h3>
           {openingHours.map((time) => (
             <p key={time.day}>
               {time.day}: {time.time}
@@ -57,7 +67,7 @@ useGSAP(() => {
           ))}
         </div>
         <div className="">
-            <h3>Socials</h3>
+            <h3>{t.contact.socials}</h3>
             <div className="flex-center gap-5">
                 {socials.map((social) => (
                     <a href={social.url} key={social.name} target="_blank" rel="noopener noreferrer" aria-label={social.name}>

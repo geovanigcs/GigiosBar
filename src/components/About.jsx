@@ -1,8 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../../constants/translations";
 
 const About = () => {
+const { language } = useLanguage();
+const t = translations[language];
 useGSAP(() => {
     const titkeSplit = SplitText.create('#about h2', {
         type: 'words'
@@ -28,14 +32,14 @@ useGSAP(() => {
             <div className="mb-16 md:px-0 px-5">
                 <div className="content">
                     <div className="md:col-span-8">
-                        <p className="badge">Best Cocktails</p>
-                        <h2>Where every detail matters <span className="text-white">-</span> from muddle to garnish</h2>                      
+                        <p className="badge">{t.about.badge}</p>
+                        <h2>{t.about.title} <span className="text-white">-</span> {t.about.titleSpan}</h2>                      
                     </div>
                     <div className="sub-content">
-                        <p>Every cocktail we serve is a reflection of our obsession with detail - from the first muddle to the final garnish. That care is what turns a simple drink into something truly memorable.</p>
+                        <p>{t.about.description}</p>
                         <div className="">
                             <p className="md:text-3xl text-xl font-bold"><span>4.5</span>/5</p>
-                            <p className="text-sm text-white-100">More than +12000 customers</p>
+                            <p className="text-sm text-white-100">{t.about.rating}</p>
                         </div>
                     </div>
                 </div>

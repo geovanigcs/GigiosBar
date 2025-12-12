@@ -3,12 +3,16 @@ import { SplitText, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../../constants/translations";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const videoRef = useRef()
     const isMobile = useMediaQuery({ maxWidth: 767 })
+    const { language } = useLanguage();
+    const t = translations[language];
 
    useGSAP(() => {
         const chars = document.querySelectorAll(".title .char");
@@ -70,12 +74,9 @@ const Hero = () => {
     <>
       <section id="hero" className="noisy">
         <h1 className="title">
-          <div className="char text-gradient" style={{display: 'inline-block'}}>M</div>
-          <div className="char text-gradient" style={{display: 'inline-block'}}>O</div>
-          <div className="char text-gradient" style={{display: 'inline-block'}}>J</div>
-          <div className="char text-gradient" style={{display: 'inline-block'}}>I</div>
-          <div className="char text-gradient" style={{display: 'inline-block'}}>T</div>
-          <div className="char text-gradient" style={{display: 'inline-block'}}>O</div>
+          {t.hero.title.split('').map((char, index) => (
+            <div key={index} className="char text-gradient" style={{display: 'inline-block'}}>{char}</div>
+          ))}
         </h1>
 
         <img src="/images/hero-left-leaf.png" alt="left-leaf" className="left-leaf"/>
@@ -83,14 +84,14 @@ const Hero = () => {
         <div className="body">
             <div className="content">
                 <div className="space-y-5 hidden md:block">
-                    <p>Cool. Crisp. Classic.</p>
-                    <p className="subtitle">Sip the Spirit <br /> of Summer</p>
+                    <p>{t.hero.tagline1}</p>
+                    <p className="subtitle">{t.hero.tagline2} <br /> {t.hero.tagline2b}</p>
                 </div>
                 <div className="view-cocktails">
                     <p className="subtitle">
-                        Every cocktail on our menu is a blend of premium ingredients, creative flair, and timeless recipes  - designed to delight your senses.
+                        {t.hero.description}
                     </p>
-                    <a href="#cocktails">View Cocktails</a>
+                    <a href="#cocktails">{t.hero.viewCocktails}</a>
                 </div>
             </div>
         </div>
