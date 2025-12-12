@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from 'react';
-
+'use client';
+import { createContext, useContext, useState, useEffect } from 'react';
 const LanguageContext = createContext();
 
 export const useLanguage = () => {
@@ -8,10 +8,17 @@ export const useLanguage = () => {
     throw new Error('useLanguage must be used within a LanguageProvider');
   }
   return context;
-};
+};''
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en'); // Default: English
+  const [language, setLanguage] = useState(() => {
+    const savedLanguage = localStorage.getItem('gigiosbar-language');
+    return savedLanguage || 'en';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('gigiosbar-language', language);
+  }, [language]);
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'pt' : 'en');
