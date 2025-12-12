@@ -30,7 +30,7 @@ Neste projeto, utilizei princípios de design centrado no usuário, focando em:
 - 🔄 Navegação fluida entre seções
 
 ## 📸 Imagens do Projeto
-![Imagem do Projeto](public/readme/capa.png)
+![Imagem do Projeto]([public/readme/capa.png](https://www.figma.com/design/ByZfAHEBqsjfVc4uQXuIgC/V%C3%A1rios?node-id=209-2&t=HFBu13T5aDGLpccl-0))
 
 ## ⚙️ Como Executar o Projeto
 
