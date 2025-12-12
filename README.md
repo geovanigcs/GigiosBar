@@ -30,7 +30,7 @@ Neste projeto, utilizei princípios de design centrado no usuário, focando em:
 - 🔄 Navegação fluida entre seções
 
 ## 📸 Imagens do Projeto
-![Imagem do Projeto](public/readme/capa.png)
+![Imagem do Projeto](public/readme/readme.png)
 
 ## ⚙️ Como Executar o Projeto
 
