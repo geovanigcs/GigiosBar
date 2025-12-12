@@ -30,7 +30,7 @@ Neste projeto, utilizei princípios de design centrado no usuário, focando em:
 - 🔄 Navegação fluida entre seções
 
 ## 📸 Imagens do Projeto
-![Imagem do Projeto](https://github.com/geovanigcs/GigiosBar/blob/main/public/readme/readme.png)
+![Imagem do Projeto](https://github.com/geovanigcs/GigiosBar/blob/main/public/images/readme.png)
 
 ## ⚙️ Como Executar o Projeto
 
